@@ -17,6 +17,17 @@ public class FileUtils {
         return ext;
     }
     
+    public static void pipe(Reader reader, Writer writer) throws IOException {
+        pipe(reader, writer, 1024);
+    }
+    
+    public static void pipe(Reader reader, Writer writer, int buffersize) throws IOException {
+        char[] buffer = new char[1024];
+        while (reader.read(buffer) != -1) {
+            writer.write(buffer);
+        }
+    }
+    
     public static ArrayList<File> Find(File path, Boolean recursive) {
         ArrayList<File> files = new ArrayList<File>();
         Find(files, path, recursive);
