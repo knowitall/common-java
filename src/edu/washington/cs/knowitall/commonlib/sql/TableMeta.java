@@ -1,4 +1,4 @@
-package edu.washington.cs.knowit.commonlib.sql;
+package edu.washington.cs.knowitall.commonlib.sql;
 
 import java.sql.*;
 import java.util.regex.*;
@@ -107,7 +107,6 @@ public class TableMeta {
 
     public String sqlLoadDataString(String path, String terminator, int ignore) 
         throws SQLException {
-        Statement state;
 
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < columns.length; i++) {

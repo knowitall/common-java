@@ -1,4 +1,4 @@
-package edu.washington.cs.knowit.commonlib;
+package edu.washington.cs.knowitall.commonlib;
 
 import java.io.*;
 import java.util.*;

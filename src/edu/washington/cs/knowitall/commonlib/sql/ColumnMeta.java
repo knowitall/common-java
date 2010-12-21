@@ -1,4 +1,4 @@
-package edu.washington.cs.knowit.commonlib.sql;
+package edu.washington.cs.knowitall.commonlib.sql;
 
 public class ColumnMeta {
     private String name;
