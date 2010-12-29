@@ -6,6 +6,9 @@
   <property name="lib"  location="../../../libraries/jar"/>
 
   <path id="master-classpath">
+    <fileset dir="${lib}">
+      <include name="*.jar"/>
+    </fileset>
   </path>
   
   <target name="init">
@@ -23,7 +26,9 @@
   <target name="dist" depends="compile" description="generate the distribution" >
     <mkdir dir="${dist}/lib"/>
     <property name="commonlibjar" location="${dist}/lib/commonlib-${DSTAMP}.jar" />
-    <jar jarfile="${commonlibjar}" basedir="${build}" />
+    <jar jarfile="${commonlibjar}" basedir="${build}">
+      <zipfileset src="${lib}/guava.jar" />
+    </jar>
     <symlink resource="${commonlibjar}" link="${dist}/lib/commonlib.jar" overwrite="true" />
   </target>
 
