@@ -1,6 +1,7 @@
 package edu.washington.cs.knowitall.commonlib.sql;
 
 import java.sql.*;
+import java.util.Arrays;
 import java.util.regex.*;
 
 public class TableMeta {
