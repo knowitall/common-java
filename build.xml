@@ -1,39 +1,16 @@
-<project name="CommonLib" default="dist" basedir=".">
+<project name="commonlib" default="jar" basedir=".">
 
-  <property name="src" location="src"/>
-  <property name="build" location="build"/>
-  <property name="dist"  location="../dist"/>
-  <property name="lib"  location="../../../libraries/jar"/>
+    <property name="jarname" value="commonlib" />
+    <property name="dist"  location="../dist"/>
 
-  <path id="master-classpath">
-    <fileset dir="${lib}">
-      <include name="*.jar"/>
-    </fileset>
-  </path>
-  
-  <target name="init">
-    <tstamp/>
-    <mkdir dir="${build}"/>
-  </target>
+    <import file="../build-common.xml" />
 
-  <target name="compile" depends="init"
-        description="compile the source">
-    <javac srcdir="${src}" destdir="${build}" includeAntRuntime="false">
-      <classpath refid="master-classpath"/>
-      </javac>
-  </target>
-
-  <target name="dist" depends="compile" description="generate the distribution" >
-    <mkdir dir="${dist}/lib"/>
-    <property name="commonlibjar" location="${dist}/lib/commonlib-${DSTAMP}.jar" />
-    <jar jarfile="${commonlibjar}" basedir="${build}">
-      <zipfileset src="${lib}/guava.jar" />
-    </jar>
-    <symlink resource="${commonlibjar}" link="${dist}/lib/commonlib.jar" overwrite="true" />
-  </target>
-
-  <target name="clean" description="clean up" >
-    <delete dir="${build}"/>
-    <delete dir="${dist}"/>
-  </target>
+    <target name="dist" depends="compile" description="generate the distribution" >
+        <mkdir dir="${dist}"/>
+        <property name="commonlibjar" location="${dist}/commonlib-${DSTAMP}.jar" />
+        <jar jarfile="${commonlibjar}" basedir="${build}">
+            <zipfileset src="${libraries}/guava.jar" />
+        </jar>
+        <symlink resource="${commonlibjar}" link="${dist}/commonlib.jar" overwrite="true" />
+    </target>
 </project>
