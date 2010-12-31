@@ -77,21 +77,4 @@ public class FileUtils {
             files.add(path);
         }
     }
-    
-    public static String readAsString(File file, String type) throws IOException {
-        char[] buffer = new char[(int) file.length()];
-        
-        InputStreamReader reader = null;
-        try {
-	        reader = new InputStreamReader(new FileInputStream(file), type);
-	        reader.read(buffer);
-	        return new String(buffer);
-        }
-        finally {
-        	if (reader != null) {
-        		reader.close();
-        	}
-        }
-
-    }
 }
