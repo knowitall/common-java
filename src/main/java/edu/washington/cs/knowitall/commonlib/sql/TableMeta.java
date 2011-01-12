@@ -1,8 +1,10 @@
 package edu.washington.cs.knowitall.commonlib.sql;
 
-import java.sql.*;
-import java.util.Arrays;
-import java.util.regex.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TableMeta {
     private String name;
