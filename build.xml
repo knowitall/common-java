@@ -4,7 +4,7 @@
 
     <import file="../build-common.xml" />
 
-    <path id="classpath">
+    <path id="main.classpath">
         <fileset dir="${libraries}/jar/" includes="guava.jar" />
     </path>
 
