@@ -1,9 +1,12 @@
 <project name="commonlib" default="jar" basedir=".">
-
     <property name="jarname" value="commonlib" />
     <property name="dist"  location="../dist"/>
 
     <import file="../build-common.xml" />
+
+    <path id="classpath">
+        <fileset dir="${libraries}/jar/" includes="guava.jar" />
+    </path>
 
     <target name="dist" depends="compile" description="generate the distribution" >
         <mkdir dir="${dist}"/>
