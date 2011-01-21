@@ -12,7 +12,7 @@
         <mkdir dir="${dist}"/>
         <property name="commonlibjar" location="${dist}/commonlib-${DSTAMP}.jar" />
         <jar jarfile="${commonlibjar}" basedir="${build}">
-            <zipfileset src="${libraries}/guava.jar" />
+            <zipfileset src="${libraries}/guava-r07.jar" />
         </jar>
         <symlink resource="${commonlibjar}" link="${dist}/commonlib.jar" overwrite="true" />
     </target>
