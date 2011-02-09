@@ -28,4 +28,56 @@ public class StringUtils {
         
         return parts;
     }
+    
+    public static List<String> tokenize(String string, Pattern[] patterns) {
+        final Pattern whitespace = Pattern.compile("\\s+");
+        return tokenize(string, patterns, whitespace);
+    }
+    
+    public static List<String> tokenize(String string, Pattern[] patterns, Pattern ignore) {
+        List<String> tokens = new ArrayList<String>(string.length());
+        
+        int start = 0;
+        while (start < string.length()) {
+            Matcher match = null;
+            
+            // ignore
+            if ((match = ignore.matcher(string).region(start, string.length())).lookingAt()) {
+                start = match.end();
+                continue;
+            }
+            
+            boolean matched = false;
+            for (Pattern p : patterns) {
+                if ((match = p.matcher(string).region(start, string.length())).lookingAt()) {
+                    tokens.add(match.group(0));
+                    start = match.end();
+                    
+                    matched = true;
+                    break;
+                }
+            }
+            
+            // we did not find any matches, throw exception
+            if (!matched) {
+                throw new IllegalArgumentException("Un-tokenizable string: '" + string.substring(start) + "'");
+            }
+        }
+        
+        return tokens;
+    }
+    
+    public static int indexOfClose(String string, int start, char open, char close) {
+        int count = 0;
+        do {
+            char c = string.charAt(start++);
+            if (c == open) {
+                count++;
+            } else if (c == close) {
+                count--;
+            }
+        } while (count > 0); 
+        
+        return start;
+    }
 }
