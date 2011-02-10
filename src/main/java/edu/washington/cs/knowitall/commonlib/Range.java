@@ -117,6 +117,9 @@ public class Range implements Iterable<Integer>, Comparable<Range> {
 
 
     public boolean overlapsWith(Range range) {
+        if (this.isEmpty() || range.isEmpty()) {
+            return false;
+        }
         Range left = getLeft(this, range);
         Range right = getRight(this, range);
         return left.getStart() <= right.getStart() && 
