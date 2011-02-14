@@ -1,4 +1,4 @@
-package Mutable;
+package edu.washington.cs.knowitall.commonlib.mutable;
 
 public class MutableInteger {
     int contents;
