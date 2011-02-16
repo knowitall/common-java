@@ -122,7 +122,7 @@ public class TableMeta {
 
         return "LOAD DATA LOCAL INFILE \"" 
             + path + "\"\n" +
-            "REPLACE INTO TABLE " + this.name + "\n" +
+            "IGNORE INTO TABLE " + this.name + "\n" +
             "FIELDS TERMINATED BY '" + terminator + "'\n" +
             (ignore > 0 ? "IGNORE " + ignore + " LINES\n" : "") +
             "(" + columnNames + ")";
