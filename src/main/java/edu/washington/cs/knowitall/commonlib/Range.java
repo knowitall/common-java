@@ -1,5 +1,6 @@
 package edu.washington.cs.knowitall.commonlib;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -15,7 +16,9 @@ import com.google.common.base.Joiner;
  * @author michael
  *
  */
-public class Range implements Iterable<Integer>, Comparable<Range> {
+public class Range implements Iterable<Integer>, Comparable<Range>, Serializable {
+    private static final long serialVersionUID = -5916908704306283230L;
+
     public final static Range EMPTY = new Range(0, 0);
 
 	private final int start;
