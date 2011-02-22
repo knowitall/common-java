@@ -16,12 +16,13 @@ import com.google.common.base.Joiner;
  * @author michael
  *
  */
-public class Range implements Iterable<Integer>, Comparable<Range>, Serializable {
+public class Range extends AbstractRange 
+implements Iterable<Integer>, Comparable<Range>, Serializable {
     private static final long serialVersionUID = -5916908704306283230L;
 
     public final static Range EMPTY = new Range(0, 0);
 
-	private final int start;
+    private final int start;
     private final int length;
     
     private static final Comparator<Range> startComparator = new Comparator<Range>() {
@@ -86,14 +87,6 @@ public class Range implements Iterable<Integer>, Comparable<Range>, Serializable
         return start + length - 1;
     }
 
-    public boolean isLeftOf(Range range) {
-        return start < range.getStart();
-    }
-
-    public boolean isRightOf(Range range) {
-        return range.getStart() < start;
-    }
-
     public boolean contains(int i) {
         return getStart() <= i && i < getStart() + getLength(); 
     }
@@ -147,8 +140,8 @@ public class Range implements Iterable<Integer>, Comparable<Range>, Serializable
             return range;
         }
         if (isAdjacentOrOverlaps(range)) {
-        	int start = getLeft(this, range).getStart();
-        	int length = Math.max(getLastIndex(), range.getLastIndex()) + 1 - start;
+            int start = getLeft(this, range).getStart();
+            int length = Math.max(getLastIndex(), range.getLastIndex()) + 1 - start;
             return new Range(start, length);
         } else {
             throw new IllegalArgumentException("Ranges must be adjacent or overlapping to merge.");
@@ -197,17 +190,17 @@ public class Range implements Iterable<Integer>, Comparable<Range>, Serializable
      * @param ranges
      */
     public static boolean isDisjoint(Collection<Range> ranges) {
-    	List<Range> rangesList = new ArrayList<Range>(ranges.size());
-    	rangesList.addAll(ranges);
-    	Collections.sort(rangesList);
-    	for (int i = 0; i < rangesList.size() - 1; i++) {
-    		Range rCurrent = rangesList.get(i);
-			Range rNext = rangesList.get(i+1);
-			if (rCurrent.overlapsWith(rNext)) {
-				return false;
-			}
-    	}
-    	return true;
+        List<Range> rangesList = new ArrayList<Range>(ranges.size());
+        rangesList.addAll(ranges);
+        Collections.sort(rangesList);
+        for (int i = 0; i < rangesList.size() - 1; i++) {
+            Range rCurrent = rangesList.get(i);
+            Range rNext = rangesList.get(i+1);
+            if (rCurrent.overlapsWith(rNext)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -277,9 +270,9 @@ public class Range implements Iterable<Integer>, Comparable<Range>, Serializable
 
     }
 
-	@Override
-	public int compareTo(Range o) {
-		return startComparator.compare(this, o);
-	}
+    @Override
+    public int compareTo(Range o) {
+        return startComparator.compare(this, o);
+    }
 
 }
