@@ -7,11 +7,40 @@ public abstract class AbstractRange {
     public abstract boolean contains(int i);
     public abstract boolean contains(Range range);
     
+
+    /***
+     * Returns true if this range ends before the other range starts.
+     * @param range
+     * @return
+     */
     public boolean isLeftOf(AbstractRange range) {
+        return this.getEnd() < range.getStart();
+    }
+
+    /***
+     * Returns true if this range ends before the other range starts.
+     * @param range
+     * @return
+     */
+    public boolean isRightOf(AbstractRange range) {
+        return range.getEnd() < this.getStart();
+    }
+    
+    /***
+     * Returns true if this range starst before the other range starts.
+     * @param range
+     * @return
+     */
+    public boolean startsLeftOf(AbstractRange range) {
         return this.getStart() < range.getStart();
     }
 
-    public boolean isRightOf(AbstractRange range) {
+    /***
+     * Returns true if this range starts before the other range starts.
+     * @param range
+     * @return
+     */
+    public boolean startsRightOf(AbstractRange range) {
         return range.getStart() < this.getStart();
     }
 }
