@@ -68,14 +68,26 @@ public class StringUtils {
     }
     
     public static int indexOfClose(String string, int start, char open, char close) {
+        start--;
+        
         int count = 0;
         do {
-            char c = string.charAt(start++);
+            start++;
+            
+            // we hit the end
+            if (start >= string.length()) {
+                return -1;
+            }
+            
+            char c = string.charAt(start);
+            
+            // we hit an open/close
             if (c == open) {
                 count++;
             } else if (c == close) {
                 count--;
             }
+            
         } while (count > 0); 
         
         return start;
