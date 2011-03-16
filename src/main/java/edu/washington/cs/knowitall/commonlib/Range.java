@@ -94,6 +94,10 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
     public boolean contains(Range range) {
         return this.contains(range.getStart()) && this.contains(range.getEnd() - 1);
     }
+    
+    public boolean subset(Range range) {
+        return range.contains(this);
+    }
 
     public static Range getLeft(Range range1, Range range2) {
         if (range1.getStart() <= range2.getStart()) {
