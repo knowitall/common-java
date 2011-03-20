@@ -6,7 +6,7 @@
 
     <path id="main.classpath">
         <fileset dir="${libraries}/jar/" includes="guava-r07.jar" />
-        <fileset dir="${libraries}/jar/" includes="junit.jar" />
+        <fileset dir="${libraries}/jar/" includes="junit-4.8.2.jar" />
     </path>
 
     <target name="dist" depends="compile" description="generate the distribution" >
