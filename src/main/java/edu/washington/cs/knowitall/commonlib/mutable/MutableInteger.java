@@ -1,5 +1,10 @@
 package edu.washington.cs.knowitall.commonlib.mutable;
 
+/***
+ * A non-threadsafe mutable integer.
+ * @author schmmd
+ *
+ */
 public class MutableInteger {
     int contents;
     

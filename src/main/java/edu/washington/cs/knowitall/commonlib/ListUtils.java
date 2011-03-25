@@ -1,0 +1,23 @@
+package edu.washington.cs.knowitall.commonlib;
+
+import java.util.ArrayList;
+
+public class ListUtils {
+    public static <E> void removeNulls(ArrayList<E> list) {
+        int pos = 0;
+        for (int i = 0; i < list.size(); i++) {
+            E current = list.get(i);
+            if (current != null) {
+                if (i != pos) {
+                    list.set(pos, current);
+                }
+                
+                pos++;
+            }
+        }
+        
+        for (int i = list.size() - 1; i >= pos; i--) {
+            list.remove(i);
+        }
+    }
+}
