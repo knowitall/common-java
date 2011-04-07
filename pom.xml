@@ -3,6 +3,12 @@
   <groupId>edu.washington.cs.knowitall</groupId>
   <artifactId>commonlib</artifactId>
   <version>SNAPSHOT</version>
+  <parent>
+    <groupId>edu.washington.cs.knowitall</groupId>
+    <artifactId>nlptools</artifactId>
+    <version>SNAPSHOT</version>
+    <relativePath>../nlptools/pom.xml</relativePath>
+  </parent>
 
   <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,13 +20,6 @@
           <url>file:///projects/WebWare7/nlp-mavenrepo</url>
       </repository>
   </repositories>
-
-  <distributionManagement>
-      <repository>
-          <id>knowitall</id>
-          <url>file:///projects/WebWare7/nlp-mavenrepo</url>
-      </repository>
-  </distributionManagement>
 
   <dependencies>
     <dependency>

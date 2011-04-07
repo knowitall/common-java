@@ -1,5 +1,11 @@
 <project name="commonlib" default="jar" basedir=".">
     <property name="jarname" value="commonlib" />
+    <parent>
+      <groupId>edu.washington.cs.knowitall</groupId>
+      <artifactId>nlptools</artifactId>
+      <version>SNAPSHOT</version>
+      <relativePath>../nlptools/pom.xml</relativePath>
+    </parent>
     <property name="dist"  location="../dist"/>
 
     <import file="../build-common.xml" />
