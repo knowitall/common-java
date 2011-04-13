@@ -29,6 +29,15 @@ public class StringUtils {
         return parts;
     }
     
+    public static String indent(String string, String indent) {
+        final Pattern pattern = Pattern.compile("^", Pattern.MULTILINE);
+        return pattern.matcher(string).replaceAll(indent);
+    }
+    
+    public static String indent(String string) {
+        return indent(string, "    ");
+    }
+    
     public static List<String> tokenize(String string, Pattern[] patterns) {
         final Pattern whitespace = Pattern.compile("\\s+");
         return tokenize(string, patterns, whitespace);
