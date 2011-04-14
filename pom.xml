@@ -1,7 +1,8 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.washington.cs.knowitall</groupId>
-  <artifactId>commonlib</artifactId> <version>SNAPSHOT</version>
+  <artifactId>commonlib</artifactId> 
+  <version>SNAPSHOT</version>
   <parent>
     <groupId>edu.washington.cs.knowitall</groupId>
     <artifactId>nlptools</artifactId>
@@ -13,18 +14,11 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <repositories>
-      <repository>
-          <id>knowitall</id>
-          <url>file:///projects/WebWare7/nlp-mavenrepo</url>
-      </repository>
-  </repositories>
-
   <dependencies>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>r08</version>
+      <version>r09</version>
     </dependency>
 
     <dependency>
