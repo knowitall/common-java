@@ -22,6 +22,16 @@ public class ComparableSequence<E extends Comparable<E>> implements Comparable<C
         ComparableSequence<E> comperable = (ComparableSequence<E>)other;
         return this.compareTo(comperable) == 0;
     }
+    
+    public int hashCode() {
+        int hash = 1;
+        for (int i = 0; i < comparables.length; i++) {
+            hash *= comparables[i].hashCode();
+            hash *= 39;
+        }
+        
+        return hash;
+    }
 
     @Override
     public int compareTo(ComparableSequence<E> comparable) {
