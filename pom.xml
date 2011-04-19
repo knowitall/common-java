@@ -5,9 +5,9 @@
   <version>SNAPSHOT</version>
   <parent>
     <groupId>edu.washington.cs.knowitall</groupId>
-    <artifactId>nlptools</artifactId>
+    <artifactId>knowitall</artifactId>
     <version>SNAPSHOT</version>
-    <relativePath>../nlptools/pom.xml</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <properties>
