@@ -1,15 +1,20 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.washington.cs.knowitall</groupId>
-  <artifactId>commonlib</artifactId> 
-  <version>SNAPSHOT</version>
   <parent>
     <groupId>edu.washington.cs.knowitall</groupId>
     <artifactId>knowitall</artifactId>
-    <version>SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>1.0.3</version>
   </parent>
-
+  <groupId>edu.washington.cs.knowitall</groupId>
+  <artifactId>commonlib</artifactId> 
+  <name>commonlib</name>
+  <version>1.0.3-SNAPSHOT</version>
+  <repositories>
+    <repository>
+      <id>knowitall-public</id>
+      <url>http://knowitall.cs.washington.edu/maven2</url>
+    </repository>
+  </repositories>
   <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -18,13 +23,6 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>r09</version>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.1</version>
     </dependency>
   </dependencies>
 </project>
