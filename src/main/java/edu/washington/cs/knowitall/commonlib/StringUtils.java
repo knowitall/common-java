@@ -8,22 +8,33 @@ import java.util.regex.Pattern;
 import com.google.common.base.Joiner;
 
 public class StringUtils {
+    public static String quote(Object object) {
+        return "\"" + object.toString() + "\"";
+    }
+    
     public static List<String> splitInto(String string, Pattern pattern) {
         Matcher matcher = pattern.matcher(string);
         
         List<String> parts = new ArrayList<String>();
         
         int i = 0;
-        while (matcher.find()) {
-            for (; i < matcher.start(); i++) {
-                if (i < string.length() && string.charAt(i) != ' ') {
-                    throw new IllegalArgumentException("Could not split string into specified pattern.  Found matches '" + Joiner.on(", ").join(parts) + "' and then '" + string.charAt(i) + "' found between matches.");
-                }
+        while (matcher.find(i)) {
+            if (i < matcher.start()) {
+                throw new IllegalArgumentException("Could not split string into specified pattern.  Found matches '" + Joiner.on(", ").join(parts) + "' and then '" + string.charAt(i) + "' found between matches.");
             }
             
-            parts.add(matcher.group(0));
+            if (matcher.groupCount() > 0) {
+                parts.add(matcher.group(1));
+            }
+            else {
+                parts.add(matcher.group(0));
+            }
             
             i = matcher.end();
+        }
+        
+        if (i != string.length()) {
+            throw new IllegalArgumentException("Pattern does not extend to end of string: " + i + "/" + string.length());
         }
         
         return parts;
