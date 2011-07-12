@@ -157,7 +157,7 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
     public boolean isAdjacentTo(Range range) {
         Range left = getLeft(this, range);
         Range right = getRight(this, range);
-        return left.getStart() + left.getLength() == right.getStart();
+        return left.getEnd() == right.getStart();
     }
 
     public boolean isAdjacentOrOverlaps(Range range) {
@@ -179,6 +179,12 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
             throw new IllegalArgumentException("Ranges must be adjacent or overlapping to merge.");
         }
     }
+    
+    public Range extend(Range range) {
+        int start = getLeft(this, range).getStart();
+        int end = getRight(this, range).getEnd();
+        return Range.fromInterval(start, end);
+    }
 
     public Range removeOverlap(Range range) {
         Integer newStart = -1;
@@ -193,7 +199,13 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
                 newLength++;
             }
         }
-        return new Range(newStart, newLength);
+        
+        if (newStart < 0) {
+        	return null;
+        }
+        else {
+	        return new Range(newStart, newLength);
+        }
     }
 
     public boolean equals(Range r) {
