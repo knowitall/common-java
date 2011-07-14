@@ -181,6 +181,12 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
     }
     
     public Range extend(Range range) {
+        if (range.isEmpty()) {
+            return this;
+        }
+        else if (this.isEmpty()) {
+            return range;
+        }
         int start = getLeft(this, range).getStart();
         int end = getRight(this, range).getEnd();
         return Range.fromInterval(start, end);
