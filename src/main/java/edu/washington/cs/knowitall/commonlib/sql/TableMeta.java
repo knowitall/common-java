@@ -1,10 +1,15 @@
 package edu.washington.cs.knowitall.commonlib.sql;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.base.Joiner;
 
 public class TableMeta {
     private String name;
@@ -156,5 +161,31 @@ public class TableMeta {
             int ignore) 
         throws SQLException {
         this.execute(conn, this.sqlLoadDataString(path, terminator, ignore));
+    }
+    
+    public void println(PrintWriter writer, Object... arguments) {
+    	if (arguments.length != this.columnCount()) {
+    		throw new IllegalArgumentException("'arguments' varargs does not equal column count: " + arguments.length + " != " + this.columnCount());
+    	}
+    	
+    	List<String> strings = new ArrayList<String>();
+    	int i = 0;
+    	for (Object arg : arguments) {
+    		String string = arg.toString();
+    		
+    		ColumnMeta column = this.columns[i];
+    		TypeMeta type = column.type();
+    		
+    		if (type.type().equalsIgnoreCase("VARCHAR") && type.size() != null) {
+    			if (string.length() > type.size()) {
+	    			string = string.substring(0, type.size());
+    			}
+    		}
+    		
+    		strings.add(string);
+    			
+			i++;
+    	}
+    	writer.println(Joiner.on("\t").join(strings));
     }
 }
