@@ -153,6 +153,15 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
         return left.getStart() <= right.getStart() && 
         right.getStart() < left.getStart() + left.getLength();
     }
+    
+    public int overlap(Range range) {
+    	if (this.isEmpty() || range.isEmpty() || !this.overlapsWith(range)) {
+            return 0;
+        }
+        Range left = getLeft(this, range);
+        Range right = getRight(this, range);
+        return left.getEnd() - right.getStart();
+    }
 
     public boolean isAdjacentTo(Range range) {
         Range left = getLeft(this, range);
