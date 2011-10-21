@@ -8,7 +8,7 @@
   <parent>
     <groupId>edu.washington.cs.knowitall</groupId>
     <artifactId>knowitall</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3-SNAPSHOT</version>
   </parent>
   <scm>
     <connection>scm:svn:svn+ssh://coco.cs.washington.edu/projects/WebWare7/nlp-svn/trunk/projects/java/commonlib</connection>
@@ -20,8 +20,12 @@
   </properties>
   <repositories>
     <repository>
-      <id>${repositoryId}</id>
-      <url>${repositoryUrl}</url>
+      <id>knowitall-public</id>
+      <url>http://knowitall.cs.washington.edu/maven2</url>
+    </repository>
+    <repository>
+      <id>knowitall-snapshot</id>
+      <url>http://knowitall.cs.washington.edu/maven2-snapshot</url>
     </repository>
   </repositories>
   <dependencies>

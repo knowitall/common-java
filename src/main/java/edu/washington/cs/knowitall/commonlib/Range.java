@@ -35,10 +35,10 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
 
     public Range(int start, int length) {
         if (length < 0) {
-            throw new IllegalArgumentException("Range length must be >= 0.");
+            throw new IllegalArgumentException("Range length must be >= 0: " + length);
         }
         if (start < 0) {
-            throw new IllegalArgumentException("Range start must be >= 0.");
+            throw new IllegalArgumentException("Range start must be >= 0: " + start);
         }
         this.start = start;
         this.length = length;

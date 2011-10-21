@@ -7,8 +7,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class ArraySet<E> implements Set<E> {
-    private static final long serialVersionUID = 6140942206075484195L;
-    
     private final ArrayList<E> store;
     
     public ArraySet() {

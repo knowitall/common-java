@@ -76,9 +76,9 @@ public class FileUtils {
      * @param recursive iff true, search subdirectories too.
      * @return
      */
-    public static ArrayList<File> Find(File path, Boolean recursive) {
+    public static ArrayList<File> find(File path, Boolean recursive) {
         ArrayList<File> files = new ArrayList<File>();
-        Find(files, path, recursive);
+        find(files, path, recursive);
         return files;
     }
     
@@ -88,12 +88,12 @@ public class FileUtils {
      * @param path
      * @param recursive
      */
-    private static void Find(List<File> files, File path, Boolean recursive) {
+    private static void find(List<File> files, File path, Boolean recursive) {
         if (path.isDirectory()) {
             // iterate over files
             for (File file : path.listFiles()) {
                 if (recursive || !file.isDirectory()) {
-                    Find(files, file, recursive);
+                    find(files, file, recursive);
                 }
             }
         } else {
