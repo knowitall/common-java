@@ -159,8 +159,12 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
             return 0;
         }
         Range left = getLeft(this, range);
-        Range right = getRight(this, range);
-        return left.getEnd() - right.getStart();
+        Range right = this.getEnd() > range.getEnd() ? this : range;
+	if (left.equals(right)) {
+	    return left == this ? range.size() : this.size();
+	} else {
+	    return Math.max(0, left.getEnd() - right.getStart());
+	}
     }
 
     public boolean isAdjacentTo(Range range) {
