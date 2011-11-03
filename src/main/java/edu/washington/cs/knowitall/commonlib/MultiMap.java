@@ -3,16 +3,31 @@ package edu.washington.cs.knowitall.commonlib;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.TreeMap;
 
 import edu.washington.cs.knowitall.commonlib.delegate.Factory;
 
-public class CollectionMap<E, F> implements Map<E, Collection<F>> {
+public class MultiMap<E, F> implements Map<E, Collection<F>> {
     private final Factory<Collection<F>> factory;
     private final Map<E, Collection<F>> map;
     
-    public CollectionMap(Map<E, Collection<F>> map, Factory<Collection<F>> factory) {
+    public MultiMap(Map<E, Collection<F>> map, Factory<Collection<F>> factory) {
         this.factory = factory;
         this.map = map;
+    }
+
+    public MultiMap(Map<E, Collection<F>> map) {
+        this(map, new Factory<Collection<F>>() {
+            @Override
+            public Collection<F> create() {
+                return new TreeSet<F>();
+            }
+        });
+    }
+
+    public MultiMap() {
+        this(new TreeMap<E, Collection<F>>());
     }
 
     @Override
