@@ -57,6 +57,10 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
     public static Range fromInterval(int start, int end) {
         return new Range(start, end - start);
     }
+    
+    public int size() {
+        return this.getLength();
+    }
 
     public Range shift(int n) {
         return new Range(start + n, length);
