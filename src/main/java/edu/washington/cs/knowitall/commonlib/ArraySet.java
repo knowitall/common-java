@@ -15,17 +15,33 @@ public class ArraySet<E> implements Set<E> {
         this.store = new ArrayList<E>();
     }
     
+    public ArraySet(int size) {
+        this.store = new ArrayList<E>(size);
+    }
+    
+    private ArraySet(ArrayList<E> set) {
+        this.store = set;
+    }
+    
     public ArraySet(E[] array) {
-        this.store = new ArrayList<E>(Arrays.asList(array));
+        this(new ArrayList<E>(Arrays.asList(array)));
     }
     
     public ArraySet(Set<? extends E> set) {
-        this.store = new ArrayList<E>(set);
+        this(new ArrayList<E>(set));
     }
     
     public ArraySet(Collection<? extends E> collection) {
-        this.store = new ArrayList<E>(collection.size());
+        this(new ArrayList<E>(collection.size()));
         this.addAll(collection);
+    }
+    
+    public ArraySet<E> subList(int start, int length) {
+        return new ArraySet<E>(this.store.subList(start, length));
+    }
+    
+    public E get(int index) {
+        return store.get(index);
     }
     
     @Override
@@ -39,8 +55,9 @@ public class ArraySet<E> implements Set<E> {
         }
     }
     
-    public E get(int index) {
-        return store.get(index);
+    @Override
+    public String toString() {
+        return this.store.toString();
     }
     
     @Override
