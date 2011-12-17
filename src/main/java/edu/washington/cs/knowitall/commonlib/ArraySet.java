@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
+/* A set implementation that is backed by an ArrayList. */
 public class ArraySet<E> implements Set<E> {
     private final ArrayList<E> store;
     
