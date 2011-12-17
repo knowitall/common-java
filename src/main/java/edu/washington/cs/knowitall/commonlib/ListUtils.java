@@ -20,4 +20,9 @@ public class ListUtils {
             list.remove(i);
         }
     }
+    
+    public static <E> E swapRemove(ArrayList<E> list, int index) {
+    	list.set(index, list.get(list.size() - 1));
+    	return list.remove(list.size() - 1);
+    }
 }
