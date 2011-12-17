@@ -102,6 +102,30 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
     public boolean subset(Range range) {
         return range.contains(this);
     }
+    
+    /***
+     * Extends a range by one unit on either end.
+     * @param i the index to extend to
+     * @return
+     */
+    public Range extend(int i) {
+    	if (i < 0) {
+    		throw new IllegalArgumentException("i < 0");
+    	}
+    	
+    	if (this == Range.EMPTY){
+    		return new Range(i);
+    	}
+    	else if (this.start == i + 1) {
+    		return new Range(this.start - 1, this.length + 1);
+    	}
+    	else if (this.start + this.length == i) {
+    		return new Range(this.start, this.length + 1);
+    	}
+    	else {
+    		throw new IllegalArgumentException("i must border range: " + i);
+    	}
+    }
 
     public static Range getLeft(Range range1, Range range2) {
         if (range1.getStart() <= range2.getStart()) {
