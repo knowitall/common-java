@@ -8,7 +8,7 @@
   <groupId>edu.washington.cs.knowitall</groupId>
   <artifactId>commonlib</artifactId> 
   <name>commonlib</name>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
   <repositories>
     <repository>
       <id>${repositoryId}</id>
