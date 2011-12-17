@@ -1,5 +1,7 @@
 package edu.washington.cs.knowitall.commonlib;
 
+import edu.washington.cs.knowitall.commonlib.Range;
+
 public abstract class AbstractRange {
     public abstract boolean isEmpty();
     public abstract int getStart();
