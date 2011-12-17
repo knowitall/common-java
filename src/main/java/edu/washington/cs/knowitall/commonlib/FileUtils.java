@@ -29,7 +29,7 @@ public class FileUtils {
      * @throws IOException
      */
     public static void pipe(Reader reader, Writer writer) throws IOException {
-        pipe(reader, writer, 1024);
+        pipe(reader, writer, 4092);
     }
     
     /***
@@ -40,7 +40,7 @@ public class FileUtils {
      * @throws IOException
      */
     public static void pipe(Reader reader, Writer writer, int buffersize) throws IOException {
-        char[] buffer = new char[1024];
+        char[] buffer = new char[buffersize];
         while (reader.read(buffer) != -1) {
             writer.write(buffer);
         }
