@@ -118,6 +118,10 @@ public class ArraySet<E> implements Set<E> {
     public <T> T[] toArray(T[] a) {
         return store.toArray(a);
     }
+    
+    public E remove(int index) {
+    	return ListUtils.swapRemove(this.store, index);
+    }
 
     @Override
     public boolean remove(Object o) {
