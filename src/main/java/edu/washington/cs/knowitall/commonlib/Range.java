@@ -55,6 +55,15 @@ implements Iterable<Integer>, Comparable<Range>, Serializable {
      * @return a new range over the interval.
      */
     public static Range fromInterval(int start, int end) {
+        if (start < 0) {
+            throw new IllegalArgumentException("Range start must be >= 0: " + start);
+        }
+        if (end < 0) {
+            throw new IllegalArgumentException("Range end must be >= 0: " + end);
+        }
+        if (end < start) {
+            throw new IllegalArgumentException("Range end must be >= start: " + end + "<" + start);
+        }
         return new Range(start, end - start);
     }
     
