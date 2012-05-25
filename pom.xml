@@ -8,8 +8,10 @@
   </parent>
   <artifactId>common-java</artifactId>
   <version>2.0.2-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <name>common-java</name>
   <description>Common functionality for the KnowItAll group.</description>
+  <url>https://github.com/knowitall/common-java</url>
   <licenses>
     <license>
       <name>GPL 3</name>
@@ -21,6 +23,17 @@
     <connection>scm:git://github.com/knowitall/common-java.git</connection>
     <developerConnection>scm:git:git@github.com:knowitall/common-java.git</developerConnection>
   </scm>
+  <developers>
+    <developer>
+      <name>Anthony Fader</name>
+    </developer>
+    <developer>
+      <name>Michael Schmitz</name>
+    </developer>
+    <developer>
+      <name>Robert Bart</name>
+    </developer>
+  </developers>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
