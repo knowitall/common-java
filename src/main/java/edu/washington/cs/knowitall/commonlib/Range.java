@@ -13,7 +13,8 @@ import com.google.common.base.Joiner;
 
 /***
  * An immutable class that represent an interval.
- * @author michael
+ * @author afader
+ * @author schmmd
  *
  */
 public class Range extends AbstractRange 
